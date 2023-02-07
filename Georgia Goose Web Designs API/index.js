@@ -3,9 +3,9 @@ const app = express()
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 //const authRoute = require("./routes/auth")
-//const userRoute = require("./routes/user")
+const userRoute = require("./routes/user")
 dotenv.config();
-
+mongoose.set('strictQuery', true);
 // connecting to Database
 
 mongoose
@@ -17,9 +17,9 @@ mongoose
 //app.get("/api/test", () => {
     //console.log("test is successful");
 //});
-//app.use(express.json())
+app.use(express.json());
 //app.use("/api/auth", authRoute)
-//app.use("/api/users", userRoute)
+app.use("/api/users", userRoute);
 
 app.listen(process.env.PORT ||5000, () =>{
     console.log("Backend Server Baby!!!"); 
